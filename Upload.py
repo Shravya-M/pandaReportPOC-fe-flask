@@ -29,8 +29,7 @@ def blob_upload(file_data):
     #
     # connect_str = os.getenv(AZURE_STORAGE_CONNECTION_STRING)
     # Create the BlobServiceClient object which will be used to create a container client
-    blob_service_client = BlobServiceClient.from_connection_string(
-        'DefaultEndpointsProtocol=https;AccountName=dataformatdatastorage;AccountKey=k288LxyRHUlIsdAgs9k3XV5KvjwFoMDzDl2zVMVdwqmdMygesjhM14Zb5our+EEJwIawP6lEyzppbHBeYH6KNQ==;EndpointSuffix=core.windows.net')
+    blob_service_client = BlobServiceClient.from_connection_string('')
 
     # Create a unique name for the container
     container_name = "quickstart" + str(uuid.uuid4())
