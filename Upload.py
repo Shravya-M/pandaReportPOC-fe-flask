@@ -14,7 +14,7 @@ ALLOWED_EXTENSIONS = set(['csv'])
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-connection_string = "DefaultEndpointsProtocol=https;AccountName=testcopyfunction;AccountKey=766qjrMLxSfRbHNpAwd82D4YEnWHCAKk3gTLS/s/+c+BkUyTYLDN5hVc6xPuvAYl2PHLOjXrIK02O8lncEKK4Q==;EndpointSuffix=core.windows.net"
+connection_string = ""
 container_name = "myblockblob"
 def get_EDA_helper(file_path, blob_name):
     try:
