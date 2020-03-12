@@ -14,7 +14,7 @@ ALLOWED_EXTENSIONS = set(['csv'])
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-connection_string = ""
+connection_string = "DefaultEndpointsProtocol=https;AccountName=testcopyfunction;AccountKey=766qjrMLxSfRbHNpAwd82D4YEnWHCAKk3gTLS/s/+c+BkUyTYLDN5hVc6xPuvAYl2PHLOjXrIK02O8lncEKK4Q==;EndpointSuffix=core.windows.net"
 container_name = "myblockblob"
 def get_EDA_helper(file_path, blob_name):
     try:
@@ -54,12 +54,12 @@ def upload_file():
             result = imd.to_dict(flat=False) ['ipfile'][0]
             # print(result, result.filename)
             result.save(result.filename)
-            local_path = "/Users/s0m0961/Documents/flask-poc19/pandaReportPOC-fe-flask"
+            local_path = "/Users/s0m0961/Documents/flask-poc19/"
             upload_file_path = os.path.join(local_path, result.filename)
-            blob_service_client = BlobServiceClient.from_connection_string(connection_string)
-            blob_client = blob_service_client.get_blob_client(container=container_name, blob=result.filename)
-            with open(upload_file_path, "rb") as data:
-                blob_client.upload_blob(data, blob_type="BlockBlob", overwrite=True)
+            # blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+            # blob_client = blob_service_client.get_blob_client(container=container_name, blob=result.filename)
+            # with open(upload_file_path, "rb") as data:
+            #     blob_client.upload_blob(data, blob_type="BlockBlob", overwrite=True)
             report = get_EDA_helper(upload_file_path, result.filename)
             if report['status'] == "success":
                 return {"status": "success", "report":report['report']} 
