@@ -74,7 +74,7 @@ def get_EDA(file_path):
                     "label": feature,
                     "field": feature,
                     # "sort": 'asc',
-                    "width": 200
+                    # "width": 200
                 })
                 
         sample = json.loads(df.sample(20).to_json(orient='index'))
@@ -85,7 +85,7 @@ def get_EDA(file_path):
             
             sample_report['rows'].append(v)
             key = k
-        for k in sample[key].keys():
+        for k in sorted(sample[key].keys()):
             sample_report['columns'].append({
                  "label": k,
                     "field": k,
