@@ -56,10 +56,10 @@ def upload_file():
             result.save(result.filename)
             local_path = "/Users/s0m0961/Documents/flask-poc19/"
             upload_file_path = os.path.join(local_path, result.filename)
-            # blob_service_client = BlobServiceClient.from_connection_string(connection_string)
-            # blob_client = blob_service_client.get_blob_client(container=container_name, blob=result.filename)
-            # with open(upload_file_path, "rb") as data:
-            #     blob_client.upload_blob(data, blob_type="BlockBlob", overwrite=True)
+            blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+            blob_client = blob_service_client.get_blob_client(container=container_name, blob=result.filename)
+            with open(upload_file_path, "rb") as data:
+                blob_client.upload_blob(data, blob_type="BlockBlob", overwrite=True)
             report = get_EDA_helper(upload_file_path, result.filename)
             if report['status'] == "success":
                 return {"status": "success", "report":report['report']} 
